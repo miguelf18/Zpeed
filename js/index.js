@@ -69,9 +69,9 @@ $("#btn-signup").click(function()
             window.alert("Password do not match with the Confirm Password.");
         }
     }
-    else{
-        window.alert("Form is incomplete. Please fill out all fields.");
-    }
+    //else{
+      //  window.alert("Form is incomplete. Please fill out all fields.");
+    //}
 });
 //Esqueceu-se da password?
 $("#btn-resetPassword").click(function()
