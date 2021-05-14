@@ -70,7 +70,7 @@ $("#btn-signup").click(function()
         }
     }
     //else{
-      //  window.alert("Form is incomplete. Please fill out all fields.");
+        //window.alert("Form is incomplete. Please fill out all fields.");
     //}
 });
 //Esqueceu-se da password?
