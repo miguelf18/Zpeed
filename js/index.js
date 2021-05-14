@@ -10,7 +10,7 @@ var firebaseConfig = {
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
- 
+
   firebase.auth.Auth.Persistence.LOCAL;
 
 //Login
@@ -48,7 +48,7 @@ $("#btn-signup").click(function()
 
     if(email != "" && password != "" && cPassword != "")
     {
-        if(password== cPassword)
+        if(password == cPassword)
         {
             var result=firebase.auth().createUserWithEmailAndPassword(email,password);
 
@@ -74,7 +74,6 @@ $("#btn-signup").click(function()
     }
 });
 //Esqueceu-se da password?
-
 $("#btn-resetPassword").click(function()
 {
     var auth = firebase.auth();
@@ -103,7 +102,68 @@ $("#btn-resetPassword").click(function()
         window.alert("You did not insert a valid email.");
     }
 });
+//Alterar o Email
+$("#btn-changeEmailAddress").click(function()
+{
+    var user = firebase.auth().currentUser;
+    var email = $("#email").val();
 
+
+    if(email != "" )//and email_antigo != email_novo
+    {
+        user.updateEmail(email).then(function()
+        {
+            window.alert("Your email address was successfully changed");
+            window.alert("An email was sent to your original email address so you can review the change");
+        })
+
+        .catch(function(error)
+        {
+
+            var errorCode=error.code;
+            var errorMessage=error.message;
+
+            console.log(errorCode);
+            console.log(errorMessage);
+
+            window.alert("Message : " + errorMessage);
+        });
+    }
+    else{
+        window.alert("Your previous email cannot be your new email.");
+
+});
+//Alterar a Password(Falta meter que a passe nova nao pode ser igual a passe antiga)
+$("#btn-changePassword").click(function()
+{
+    var auth = firebase.auth();
+    var email = $("#email").val();
+
+    if(email != "" )//and email_novo != email_antigo
+    {
+        auth.sendPasswordResetEmail(email).then(function()
+        {
+            window.alert("An email has been sent to you go check it to change your password");
+        })
+
+        .catch(function(error)
+        {
+
+            var errorCode=error.code;
+            var errorMessage=error.message;
+
+            console.log(errorCode);
+            console.log(errorMessage);
+
+            window.alert("Message : " + errorMessage);
+        });
+    }
+    // if(email_novo==email_antigo){
+        //window.alert("Old password cannot be the new password");}
+    else{
+        window.alert("You did not insert a valid email.");
+    }
+});
 //Logout
 $("#btn-logout").click(function()
 {

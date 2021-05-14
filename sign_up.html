@@ -3,14 +3,14 @@
 <html>
     <head>
         <title>Register</title>
-        
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
-            
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
             <!-- MATERIAL DESIGN ICONIC FONT -->
         <link rel="stylesheet" href="design_files/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-                
+
                 <!-- STYLE CSS -->
         <link rel="stylesheet" href="design_files/css/style.css">
 
@@ -28,7 +28,7 @@
                 <div class="image-holder">
                     <img src="design_files/images/forget password.jpg">
                 </div>
-                
+
                 <form action="">
                     <h3>Register</h3>
                     <!-- Email -->
@@ -52,7 +52,7 @@
                             <i class="zmdi zmdi zmdi-arrow-right"></i>
                         </button>
                     </div>
-        
+
                     <div class="w-full text-center" style="margin-top: 49%; font-size: 15px;">
                         <a href="index.html" class="text-dark">
                             Already have an account?
@@ -60,19 +60,19 @@
                     </div>
                 </form>
             </div>
-           
+
         </div>
 
         <script src="js/index.js"></script>
         <script>
             firebase.auth().onAuthStateChanged(function(user)
             {
-                if(user)
-                {
+                if(user)//aqui esta user, mas n precisa de ser user, por isso criar outra cena
+                {//extamente igual para fazer o registo como PT E ATLETA e meter user_atleta a ir para a MainPage_atleta.html
+                  //e se for pt meter pt_atleta a ir para a pag MainPage_PT.html
                     window.location.href= "MainPage.html";
                 }
             });
-        </script> 
+        </script>
     </body>
 </html>
-
