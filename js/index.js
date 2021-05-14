@@ -46,7 +46,7 @@ $("#btn-signup").click(function()
     var password = $("#password").val();
     var cPassword = $("#confirmPassword").val();
 
-    if(email != "" && password != "" && cPassword != "")
+    //if(email != "" && password != "" && cPassword != "")
     {
         if(password == cPassword)
         {
@@ -131,6 +131,7 @@ $("#btn-changeEmailAddress").click(function()
     }
     else{
         window.alert("Your previous email cannot be your new email.");
+    }
 
 });
 //Alterar a Password(Falta meter que a passe nova nao pode ser igual a passe antiga)
