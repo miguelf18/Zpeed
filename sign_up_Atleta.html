@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Register</title>
+        <title>Register as Athlete</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
@@ -22,15 +22,18 @@
     </head>
 
     <body>
-        <div class="wrapper" style="background-image: url('design_files/images/registerback.jpg');">
+        <div class="wrapper" style="background-image: url('design_files/images/crossfit.jpg');">
 
             <div class="inner">
                 <div class="image-holder">
-                    <img src="design_files/images/forget password.jpg">
+                    <div style="text-align:center">
+                        <h2>Z-PEED</h2>
+                        </div>
+                        <img src="design_files/images/atleta.jpg" style="margin-top: 15px;" style="margin-bottom: 50px;">
                 </div>
 
                 <form action="">
-                    <h3>Register</h3>
+                    <h3>Register as Athlete</h3>
                     <!-- Email -->
                     <div class="form-wrapper">
                         <input id="email" type="email" placeholder="Email Address" class="form-control">
@@ -47,15 +50,24 @@
                         <i class="zmdi zmdi zmdi-lock"></i>
                     </div>
                     <div class="form-group container-login100-form-btn">
-                        <button id="btn-signup" type="button">
+                        <button id="btn-signup_Atleta" type="button">
                             Register
                             <i class="zmdi zmdi zmdi-arrow-right"></i>
                         </button>
                     </div>
-
-                    <div class="w-full text-center" style="margin-top: 49%; font-size: 15px;">
-                        <a href="index.html" class="text-dark">
+                    
+                    <div class="w-full text-center" style="margin-top: 50%; font-size: 15px;">
+                        <span class="text-muted">
                             Already have an account?
+                        </span>
+
+                        <a href="index.html" class="text-dark">
+                            Sign in
+                        </a>
+                    
+                    <div class="w-full text-center" style="margin-top: 1%; font-size: 15px;">
+                        <a href="sign_up_PT.html" class="text-dark">
+                            I want to sign up as Personal Trainer
                         </a>
                     </div>
                 </form>
@@ -67,10 +79,9 @@
         <script>
             firebase.auth().onAuthStateChanged(function(user)
             {
-                if(user)//aqui esta user, mas n precisa de ser user, por isso criar outra cena
-                {//extamente igual para fazer o registo como PT E ATLETA e meter user_atleta a ir para a MainPage_atleta.html
-                  //e se for pt meter pt_atleta a ir para a pag MainPage_PT.html
-                    window.location.href= "MainPage.html";
+                if(user)
+                {
+                    window.location.href= "MainPage_Atleta.html";
                 }
             });
         </script>

@@ -39,7 +39,40 @@ $("#btn-login").click(function()
     }
 });
 //Registo
-$("#btn-signup").click(function()
+$("#btn-signup_Atleta").click(function() 
+{
+    var email = $("#email").val();
+    var password = $("#password").val();
+    var cPassword = $("#confirmPassword").val();
+
+    if(email != "" && password != "" && cPassword != "")
+    {
+        if(password == cPassword)
+        {
+            var result=firebase.auth().createUserWithEmailAndPassword(email,password);
+
+        result.catch(function(error)
+        {
+
+            var errorCode=error.code;
+            var errorMessage=error.message;
+
+            console.log(errorCode);
+            console.log(errorMessage);
+
+            window.alert("Message : " + errorMessage);
+        });
+        }
+        else
+        {
+            window.alert("Password do not match with the Confirm Password.");
+        }
+    }
+    else{
+        window.alert("Form is incomplete. Please fill out all fields.");
+    }
+});
+$("#btn-signup_PT").click(function() 
 {
     var email = $("#email").val();
     var password = $("#password").val();
