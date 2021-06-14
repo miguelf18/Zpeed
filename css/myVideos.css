@@ -1,0 +1,17 @@
+#mainContainer {
+    display: grid;
+    grid-template-areas: 'seriesList videosList videoContainer' ;
+    grid-template-columns: 1fr 1fr minmax(8fr, auto);
+}
+
+#seriesList {
+    grid-area: seriesList;
+}
+
+#videosList {
+    grid-area: videoslist;
+}
+
+#videoContainer {
+    grid-area: videoContainer;
+}

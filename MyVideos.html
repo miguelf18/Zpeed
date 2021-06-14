@@ -8,7 +8,7 @@
        <script src= "https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
 
-        
+        <link rel="stylesheet" href="css/myVideos.css">
         
         <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
@@ -67,37 +67,163 @@
             </div>
         </nav>
 
-        <div>
-            <h1> Deadlift</h1>
-            <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-            </iframe>
-            <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-            </iframe>
-            <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-            </iframe>
-        </div>
 
-        <div>
-            <h1> Squat</h1>
-            <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-            </iframe>
-            <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-            </iframe>
-            <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-            </iframe>
+        <div id="mainContainer">
+            <div id="seriesList">
+            </div>
+
+            <div id="videoslist">
+            </div>
+            <div id="videoContainer">
+            </div>
+
         </div>
 
       
     
         <script src="js/index.js"></script>
         <script>
+            var db = firebase.database()
+            let userData
             firebase.auth().onAuthStateChanged(function(user)
             {
+               
                 if(!user)
                 {
                     window.location.href= "index.html";
+                } else {
+                    
+                    renderInitPage(user)
                 }
             });
+
+            function renderInitPage(user) {
+                firebase.database().ref('/Users/'+'S62P020SwJTwzFLee7hmjCkLq7y2').on('value', snapshot => {
+                    //console.log(snapshot.val())
+                    userData = snapshot.val()
+                    renderSeriesList(user)
+                } )
+
+                
+            }
+
+            // fills series and resets all other segments
+            function renderSeriesList(){
+                lst = document.getElementById('seriesList');
+
+                lst.innerHTML=""
+                
+                for (serie in userData.Series) {
+                    
+                    let child = document.createElement('p');
+                    let textnode = document.createTextNode(serie);
+
+                    //console.log(serie)
+                    // set on click listeners
+                    const idx = parseInt(serie)
+                    child.onclick = ev => renderVideoList(idx)
+
+                    child.appendChild(textnode)
+                    lst.appendChild(child)
+                }
+
+                // reset other lists
+                document.getElementById('videoslist').innerHTML=""
+                document.getElementById('videoContainer').innerHTML=""
+            }
+
+            function renderVideoList(serieIdx){
+                lst = document.getElementById('videoslist');
+                lst.innerHTML=""
+                
+                let serieData = userData.Series[serieIdx]
+
+                
+                if ('VBT' in serieData) {
+                    const vbt = document.getElementById('videoslist')
+                    let child = document.createElement('p');
+                    let textnode = document.createTextNode(`Max Weigth: ${serieData['VBT']}`);
+                    child.appendChild(textnode)
+                    vbt.appendChild(child)
+
+                    vbt.append(document.createElement('hr'))
+
+                    
+                    
+                } else {
+                    /* 
+                    * todo: handle case
+                    */
+                }
+
+
+                for( video in serieData) {
+                    if (video =='VBT') {
+                        continue
+                    }
+                    let child = document.createElement('p');
+                    let textnode = document.createTextNode(video);
+
+                    // set on click listeners
+                    const name = String(video)
+                    child.onclick = ev => renderVideoContainer(serieIdx, name)
+
+                    child.appendChild(textnode)
+                    lst.appendChild(child)
+                }
+
+                // reset other lists
+                document.getElementById('videoContainer').innerHTML=""
+            }
+
+            function renderVideoContainer(serieIdx, videoName){
+                container = document.getElementById('videoContainer');
+                container.innerHTML = ""
+
+                serieData = userData.Series[serieIdx]
+                videoData = userData.Series[serieIdx][videoName]
+                console.log(videoData)
+
+                const p = document.createElement('p')
+
+                // serie VBT
+                /*
+                if ('VBT' in serieData) {
+                    const vbt = document.createElement('p')
+                    vbt.innerText = `Serie ${serieIdx} Max Weigth: ${videoData['VBT']}`;
+                    container.appendChild(vbt);
+                }*/
+
+                // handle output video
+                if (videoData['videoURL'] == "The video was not uploaded" ){
+                    console.log("Ups")
+                } else {
+                    ytFrame = document.createElement('iframe')
+                    ytFrame.setAttribute('src', videoData['videoURL'])
+                    ytFrame.setAttribute('allowfullscreen', 'allowfullscreen')
+                    container.appendChild(ytFrame)
+                }
+
+                
+                // exercicio
+                const ex = document.createElement('p')
+                ex.innerText = videoData['exercise'];
+                container.appendChild(ex);
+
+                // weigth
+                const w = document.createElement('p')
+                w.innerText = videoData['weight'];
+                container.appendChild(w);
+                
+                // velocity
+                const v = document.createElement('p')
+                v.innerText = videoData['velocity'];
+                container.appendChild(v);               
+
+                
+            }
+
+
         </script> 
 
     </body>
