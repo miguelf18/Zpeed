@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Main Page</title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
+
+        
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>  
+    </head>
+
+    <body class="h-100">
+        <nav class="navbar navbar-expand-lg bg-dark text-white">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a class="navbar-brand" style="color: whitesmoke; text-decoration-style:wavy;" href="#">
+                            Z-PEED
+                        </a>
+                    </li>
+
+                    <li> 
+                        <a class="nav-link" style="color: whitesmoke; text-decoration-style:wavy;" href="MyVideos.html">
+                            <span style="color: white;">My Videos</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="dropdown navbar-right" style="margin-right: 30px;">
+                    <button
+                    id="option-id" 
+                    class="btn btn-light dropdown-toggle bg-dark text-white"
+                    type="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >
+                        Options
+                    </button>
+
+                    <div class="dropdown-menu" aria-labelledby="option-id">
+                    <a class="dropdown-item" id="btn-edit-profile" href="editProfile.html">
+                        Edit Profile
+                    </a>
+
+                    <a class="dropdown-item" id="btn-editEmail" href="changeEmail.html" text-align="center">
+                        Change Email 
+                     </a>
+
+                    <a class="dropdown-item" id="btn-editPassword" href="changePassword.html">
+                        Change Password
+                     </a>
+
+                    <a class="dropdown-item" id="btn-logout" href="#">
+                        Logout
+                    </a>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div>
+            <h1>Deadlift</h1>
+            <h6>The deadlift is a weight training exercise in which a loaded barbell or bar is lifted off the ground to the level of the hips, torso perpendicular to the floor, before being placed back on the ground. It is one of the three powerlifting exercises, along with the squat and bench press.</h6>
+            <img src="design_files/images/deadlift.jpg.jpg" style="margin-top: 15px;" style="margin-bottom: 50px;">
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            </iframe>
+        </div>
+
+        <div>
+            <h1>Back Squat</h1>
+            <img src="design_files/images/deadlift.jpg.jpg" style="margin-top: 15px;" style="margin-bottom: 50px;">
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            </iframe>
+        </div>
+
+    
+        <script src="js/index.js"></script>
+        <script>
+            firebase.auth().onAuthStateChanged(function(user)
+            {
+                if(!user)
+                {
+                    window.location.href= "index.html";
+                }
+                
+                //Aqui aparecem as informacoes do utilizador
+               /* var userID = firebase.auth().currentUser.uid;
+                const dbRef = firebase.database().ref();
+                
+                
+                dbRef.child("Users").child(userID).get().then((snapshot) => {
+                    if (snapshot.exists()) {
+                        console.log(snapshot.val());
+                    } else {
+                        console.log("No data available");
+                    }
+                })*/
+            });
+
+        </script> 
+
+    </body>
+</html>
+
