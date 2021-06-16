@@ -228,6 +228,8 @@ $("#btn-changePassword").click(function()
         auth.sendPasswordResetEmail(email).then(function()
         {
             window.alert("An email has been sent to you go check it to change your password");
+            window.location.href = "MainPage.html";
+
         })
 
         .catch(function(error)
@@ -259,6 +261,7 @@ $("#btn-changeEmail").click(function()
         user.updateEmail(email).then(function()
         {
             window.alert("Your email address was successfully changed.\n An email was sent to your original email address so you can review the change");
+            window.location.href = "MainPage.html";
         })
 
         .catch(function(error)

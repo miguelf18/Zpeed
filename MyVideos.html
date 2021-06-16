@@ -66,21 +66,25 @@
                 </div>
             </div>
         </nav>
-
-
+        
         <div id="mainContainer">
-            <div id="seriesList">
+            <div class=' text-dark border border-dark' style="margin: 15px; padding: 15px;">
+                <h4>Series</h4>
+                <div id="seriesList">
+                </div>
             </div>
-
-            <div id="videoslist">
+            <div class=' text-dark border border-dark' style="margin-top: 15px; margin-bottom: 15px; padding: 15px;">
+                <h4>Videos</h4>
+                <div id="videoslist">
+                </div>
             </div>
-            <div id="videoContainer">
+            <div class=' text-dark border border-dark' style="margin: 15px; padding: 15px;">
+                <h4>Informations</h4>
+                <div id="videoContainer">
+                </div>
             </div>
-
         </div>
 
-      
-    
         <script src="js/index.js"></script>
         <script>
             var db = firebase.database()
@@ -207,20 +211,22 @@
                 
                 // exercicio
                 const ex = document.createElement('p')
-                ex.innerText = videoData['exercise'];
+                ex.innerText = 'Exercise' + ' -> ' + videoData['exercise'];
                 container.appendChild(ex);
 
                 // weigth
                 const w = document.createElement('p')
-                w.innerText = videoData['weight'];
+                w.innerText = 'Weight' + ' -> ' + videoData['weight'] + 'Kg';
                 container.appendChild(w);
                 
                 // velocity
                 const v = document.createElement('p')
-                v.innerText = videoData['velocity'];
-                container.appendChild(v);               
-
-                
+                v.innerText = 'Velocity' + ' -> ' + videoData['velocity'];
+                container.appendChild(v);
+                // posture
+                const po = document.createElement('p')
+                po.innerText = 'Feedback' + ':' + videoData['POSTURE'];
+                container.appendChild(po);             
             }
 
 
