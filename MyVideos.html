@@ -102,7 +102,8 @@
             });
 
             function renderInitPage(user) {
-                firebase.database().ref('/Users/'+'S62P020SwJTwzFLee7hmjCkLq7y2').on('value', snapshot => {
+                var userID = firebase.auth().currentUser.uid;
+                firebase.database().ref('/Users/'+ userID).on('value', snapshot => {
                     //console.log(snapshot.val())
                     userData = snapshot.val()
                     renderSeriesList(user)
