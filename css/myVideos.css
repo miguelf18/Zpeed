@@ -6,10 +6,13 @@
 
 #seriesList {
     grid-area: seriesList;
+    text-decoration: underline;
+    margin-bottom: 2px;
 }
 
 #videosList {
     grid-area: videoslist;
+    
 }
 
 #videoContainer {
