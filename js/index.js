@@ -151,7 +151,7 @@ $("#btn-accountSettings").click(function()
             }
             else
             {
-                window.location.href = "MainPage.html";
+                window.location.href = "MyVideos.html";
             }
         });
 
@@ -188,7 +188,7 @@ $("#btn-editProfile").click(function()
             "Weight": weight,
             "Height": height,
         };
-        usersRef.set(userData, function(error)
+        usersRef.update(userData, function(error)
         {
             if(error)
             {
@@ -205,7 +205,7 @@ $("#btn-editProfile").click(function()
             else
             {
                 window.alert("Your profile has been updated.");
-                window.location.href = "MainPage.html";
+                window.location.href = "MyVideos.html";
             }
         });
 
@@ -228,7 +228,7 @@ $("#btn-changePassword").click(function()
         auth.sendPasswordResetEmail(email).then(function()
         {
             window.alert("An email has been sent to you go check it to change your password");
-            window.location.href = "MainPage.html";
+            window.location.href = "MyVideos.html";
 
         })
 
@@ -250,7 +250,7 @@ $("#btn-changePassword").click(function()
 });
 
 //Change Email
-$("#btn-changeEmail").click(function()
+/*$("#btn-changeEmail").click(function()
 {
     var user = firebase.auth().currentUser;
     var email = $("#email").val();
@@ -261,7 +261,7 @@ $("#btn-changeEmail").click(function()
         user.updateEmail(email).then(function()
         {
             window.alert("Your email address was successfully changed.\n An email was sent to your original email address so you can review the change");
-            window.location.href = "MainPage.html";
+            window.location.href = "MyVideos.html";
         })
 
         .catch(function(error)
@@ -279,4 +279,4 @@ $("#btn-changeEmail").click(function()
     else{
         window.alert("Please insert an email.");
     }
-});
+});*/
