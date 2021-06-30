@@ -13,9 +13,15 @@
         <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>  
+        
     </head>
 
     <body class="h-100">
+        <script>
+            window.onload(function () {
+                window.location.replace("MyVideos.html")
+            }
+        </script>
         <nav class="navbar navbar-expand-lg bg-dark text-white">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
@@ -102,11 +108,14 @@
     
         <script src="js/index.js"></script>
         <script>
+            
             firebase.auth().onAuthStateChanged(function(user)
             {
                 if(!user)
                 {
                     window.location.href= "index.html";
+                } else {
+                    
                 }
                 
                 //Aqui aparecem as informacoes do utilizador
