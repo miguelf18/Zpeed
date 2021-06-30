@@ -182,6 +182,8 @@
             }
 
             function renderVideoContainer(serieIdx, videoName){
+                const userID = firebase.auth().currentUser.uid;
+
                 container = document.getElementById('videoContainer');
                 container.innerHTML = ""
 
@@ -227,9 +229,32 @@
                 // posture
                 const po = document.createElement('p')
                 po.innerText = 'Feedback' + ':' + videoData['POSTURE'];
-                container.appendChild(po);             
-            }
+                container.appendChild(po); 
+                
+                // graphs
+                console.log("In graphs");
 
+                const graphContainer = document.createElement('div');
+                graphContainer.id = "graphContainer";
+
+                const videoRef = firebase.storage().ref(userID+'/'+videoName);
+
+                videoRef.listAll().then(res => {
+                    res.items.forEach(itemRef => {
+                        const imgContainer = document.createElement('img');
+                        itemRef.getDownloadURL().then(url => {
+                            imgContainer.src = url
+                        })
+                        graphContainer.appendChild(imgContainer);
+                        
+                    })
+                }).catch(error => console.log("Storage error in:" +error))
+                
+                container.appendChild(graphContainer);
+                
+
+            }
+            /*
             var userID = firebase.auth().currentUser.uid;
             var storageRef = firebase.storage().ref(userID);
             var fileUpload = document.getElementById("fileUpload");
@@ -242,7 +267,7 @@
             });
             storageRef.getDownloadURL().then(function(url) {
                 console.log(url);
-            });
+            });*/
 
 
         </script> 
