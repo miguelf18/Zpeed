@@ -145,13 +145,16 @@
 
                 
                 if ('VBT' in serieData) {
-                    const vbt = document.getElementById('videoslist')
+                    const vbt = document.createElement('div');
                     let child = document.createElement('p');
                     let textnode = document.createTextNode(`Max Weigth: ${serieData['VBT']}`);
+                    textnode.id="serieVBT"
+
                     child.appendChild(textnode)
                     vbt.appendChild(child)
 
-                    vbt.append(document.createElement('hr'))
+                    lst.append(vbt);
+                    lst.append(document.createElement('hr'))
 
                     
                     
@@ -161,6 +164,9 @@
                     */
                 }
 
+
+                lstContent = document.createElement('div');
+                lstContent.id="videoLstContent";
 
                 for( video in serieData) {
                     if (video =='VBT') {
@@ -174,8 +180,10 @@
                     child.onclick = ev => renderVideoContainer(serieIdx, name)
 
                     child.appendChild(textnode)
-                    lst.appendChild(child)
+                    lstContent.appendChild(child)
                 }
+
+                lst.append(lstContent);
 
                 // reset other lists
                 document.getElementById('videoContainer').innerHTML=""

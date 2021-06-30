@@ -22,3 +22,32 @@
 #graphContainer img {
     max-width: 100%;
 }
+
+#seriesList p {
+    margin: 7px;
+    background-color: darkgray;
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+}
+
+#seriesList p:hover{
+    color: white;
+    margin: 3px;
+    background-color: dimgray;
+}
+
+#videoLstContent p  {
+    margin: 7px;
+    background-color: darkgray;
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+}
+
+#videoLstContent p:hover{
+    color: white;
+    margin: 3px;
+    background-color: dimgray;
+}
+
