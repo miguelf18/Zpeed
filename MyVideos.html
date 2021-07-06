@@ -127,7 +127,8 @@
 
                     //console.log(serie)
                     // set on click listeners
-                    child.onclick = ev => renderVideoList(serie)
+                    const serieName = serie
+                    child.onclick = ev => renderVideoList(serieName)
 
                     child.appendChild(textnode)
                     lst.appendChild(child)
@@ -216,6 +217,10 @@
                     console.log("Ups")
                 } else {
                     ytFrame = document.createElement('iframe')
+                    //ytFrame.setAttribute('width', 640)
+                    ytFrame.setAttribute('id', 'ytplayer')
+                    ytFrame.setAttribute('type', "text/html")
+
                     ytFrame.setAttribute('src', videoData['videoURL'])
                     ytFrame.setAttribute('allowfullscreen', 'allowfullscreen')
                     container.appendChild(ytFrame)
