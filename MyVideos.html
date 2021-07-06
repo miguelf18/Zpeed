@@ -144,10 +144,12 @@
                 
                 let serieData = userData.Series[serie]
                 
-                if ('VBT' in serieData) {
+                const vbtResStr = 'VBT result:'
+
+                if (vbtResStr in serieData) {
                     const vbt = document.createElement('div');
                     let child = document.createElement('p');
-                    let textnode = document.createTextNode(`Max Weigth: ${serieData['VBT']}`);
+                    let textnode = document.createTextNode(`Max Weigth: ${serieData[vbtResStr][0]}`);
                     textnode.id="serieVBT"
 
                     child.appendChild(textnode)
@@ -169,7 +171,7 @@
                 lstContent.id="videoLstContent";
 
                 for( video in serieData) {
-                    if (video =='VBT') {
+                    if (video ==vbtResStr) {
                         continue
                     }
                     let child = document.createElement('p');
