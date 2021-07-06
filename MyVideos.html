@@ -1,8 +1,8 @@
-<!-- Main Page--> 
+<!-- My Videos--> 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Main Page</title>
+        <title>My Videos</title>
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
        <script src= "https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -52,9 +52,9 @@
                         Edit Profile
                     </a>
 
-                    <a class="dropdown-item" id="btn-editEmail" href="changeEmail.html" text-align="center">
+                    <!--<a class="dropdown-item" id="btn-editEmail" href="changeEmail.html" text-align="center">
                         Change Email 
-                     </a>
+                     </a>-->
 
                     <a class="dropdown-item" id="btn-editPassword" href="changePassword.html">
                         Change Password
@@ -264,22 +264,6 @@
                 
 
             }
-            /*
-            var userID = firebase.auth().currentUser.uid;
-            var storageRef = firebase.storage().ref(userID);
-            var fileUpload = document.getElementById("fileUpload");
-            fileUpload.on('change', function(evt) {
-                var firstFile = evt.target.file[0]; // get the first file uploaded
-                var uploadTask = storageRef.put(firstFile);
-                uploadTask.on('state_changed', function progress(snapshot) {
-                    console.log(snapshot.totalBytesTransferred); // progress of upload
-                });
-            });
-            storageRef.getDownloadURL().then(function(url) {
-                console.log(url);
-            });*/
-
-
         </script> 
 
     </body>
