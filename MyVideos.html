@@ -127,8 +127,7 @@
 
                     //console.log(serie)
                     // set on click listeners
-                    const idx = parseInt(serie)
-                    child.onclick = ev => renderVideoList(idx)
+                    child.onclick = ev => renderVideoList(serie)
 
                     child.appendChild(textnode)
                     lst.appendChild(child)
@@ -139,12 +138,11 @@
                 document.getElementById('videoContainer').innerHTML=""
             }
 
-            function renderVideoList(serieIdx){
+            function renderVideoList(serie){
                 lst = document.getElementById('videoslist');
                 lst.innerHTML=""
                 
-                let serieData = userData.Series[serieIdx]
-
+                let serieData = userData.Series[serie]
                 
                 if ('VBT' in serieData) {
                     const vbt = document.createElement('div');
@@ -179,7 +177,7 @@
 
                     // set on click listeners
                     const name = String(video)
-                    child.onclick = ev => renderVideoContainer(serieIdx, name)
+                    child.onclick = ev => renderVideoContainer(serie, name)
 
                     child.appendChild(textnode)
                     lstContent.appendChild(child)
